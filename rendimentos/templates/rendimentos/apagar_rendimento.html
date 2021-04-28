@@ -1,0 +1,5 @@
+<form action="" method="post">
+    {% csrf_token %}
+    <p> Confirma a operação de apagar o rendimento de "{{ object.ativo }} em {{ object.data }}?</p>
+    <input type="submit" value="Confirmar"/>
+</form>

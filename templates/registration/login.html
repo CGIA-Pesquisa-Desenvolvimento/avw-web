@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block title %} Login {% endblock %}
+
+{% block main %}
+
+
+ <h1>LOGIN</h1>
+
+
+ <form method="post">
+       <div class="clearfix">
+
+            {% if not user.is_authenticated %}
+            Favor Autenticar-se
+            {% else %}
+
+ <span class="float-left">Bem Vindo {{ user.username }}</span>
+  <span class="float-right"><a class="btn btn-primary" href="{% url 'logout' %}">Logout</a></span>
+            {% endif %}
+        </div>
+        <div class="w-100"></div>
+      <div class="mb-3">
+           {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit" class="btn btn-primary">Login</button>
+      </div>
+
+  </form>
+
+<!--<form>-->
+<!--  <div class="form-group">-->
+<!--    <label for="exampleInputEmail1">Usuário</label>-->
+<!--    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Nome Usuário">-->
+<!--    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>-->
+<!--  </div>-->
+<!--  <div class="form-group">-->
+<!--    <label for="exampleInputPassword1">Password</label>-->
+<!--    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">-->
+<!--  </div>-->
+
+<!--  <button type="submit" class="btn btn-primary">Submit</button>-->
+<!--</form>-->
+
+{% endblock %}

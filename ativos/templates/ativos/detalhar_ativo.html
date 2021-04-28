@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+
+{% block title %} Detalhar Ativos {% endblock %}
+
+{% block main %}
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Lista de Ativos</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+      </li>
+       <li class="nav-item">
+        <a class="nav-link" href="/ativos/registrar/">Registrar</a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="/ativos/listar/">Listar</a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="/ativos/detalhar/">Detalhar</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/ativos/apagar/">Apagar</a>
+      </li>
+    </ul>
+<!--    <form class="form-inline my-2 my-lg-0">-->
+<!--      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">-->
+<!--      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>-->
+<!--    </form>-->
+  </div>
+</nav>
+
+  Código: {{ object.codigo }} <br>
+  Nome: {{ object.nome_amigavel }} <br>
+  {% if  object.tipo_ativo == 'F' %}
+        Ativo: Fundos Imobiliario
+  {% else %}
+       Ativo: Ações
+  {% endif %}
+   <br>
+  Gestor: {{ object.gestor }} <br>
+  Data IPO: {{ object.data_ipo }} <br>
+  Valor IPO: {{ object.valor_ipo }} <br>
+  Segmento: {{ object.segmento }} <br>
+  Data Compra: {{ object.data_entrada }} <br>
+  Valor Patrimonial: {{ object.valor_patrimonial_inicial }} <br>
+  Valor Mercado: {{ object.valor_mercado_inicial }} <br>
+  Valor Cota: {{ object.valor_cota_adquirida }} <br>
+  Quantidade Cotas: {{ object.numero_cotas_adquiridas }} <br>
+  Taxa B3: R${{ object.taxa_b3 }} <br>
+  Liquidação: R${{ object.taxa_liquidacao }} <br>
+  Emolumentos: R${{ object.emolumentos }} <br>
+  Motivo Compra: {{ object.motivo_compra }} <br>
+  Regulamento: {{ object.regulamento }} <br>
+  Observação: {{ object.obs }} <br>
+
+
+  <a href="{% url 'atualizar_ativo' object.id %}">Atualizar</a>
+  <a href="{% url 'apagar_ativo' object.id %}">Apagar</a>
+
+{% endblock %}
